@@ -127,3 +127,36 @@ namespace CsaladiNaptar
             Console.WriteLine("\nNyomj entert...");
             Console.ReadLine();
         }
+   static void UjEsemeny()
+   {
+       Console.Clear();
+       Console.Write("Tulajdonos (apa/anya): ");
+       string nev = Console.ReadLine();
+       Console.Write("Nap (1-29): ");
+       int nap = int.Parse(Console.ReadLine());
+       Console.Write("Ora: ");
+       int ora = int.Parse(Console.ReadLine());
+       Console.Write("Perc: ");
+       int perc = int.Parse(Console.ReadLine());
+       Console.Write("Idotartam (perc): ");
+       int percTartam = int.Parse(Console.ReadLine());
+
+       DateTime start = new DateTime(2028, 2, nap, ora, perc, 0);
+       TimeSpan tartam = TimeSpan.FromMinutes(percTartam);
+
+       if (start.Hour < 8 || start.Add(tartam) > new DateTime(2028, 2, nap, 20, 0, 0))
+       {
+           Console.WriteLine("Hiba: Csak 8 es 20 ora kozott lehet!");
+       }
+       else if (UtkozesVan(nev, start, tartam))
+       {
+           Console.WriteLine("Hiba: Utkozes van!");
+       }
+       else
+       {
+           esemenyek.Add(new Esemeny(nev, start, tartam, true));
+           Rendezes();
+           Console.WriteLine("Sikeres mentese!");
+       }
+       Console.ReadLine();
+   }
