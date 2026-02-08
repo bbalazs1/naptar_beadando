@@ -62,3 +62,21 @@ namespace CsaladiNaptar
               }
           }
       }
+ static void KezdetiFeltoltes()
+ {
+     for (int i = 0; i < 40; i++)
+     {
+         int nap = rnd.Next(1, 30);
+         int ora = rnd.Next(8, 19);
+         int perc = rnd.Next(0, 4) * 15;
+         DateTime start = new DateTime(2028, 2, nap, ora, perc, 0);
+         TimeSpan tartam = TimeSpan.FromMinutes(rnd.Next(30, 121));
+         string nev = rnd.Next(0, 2) == 0 ? "apa" : "anya";
+
+         if (!UtkozesVan(nev, start, tartam))
+         {
+             esemenyek.Add(new Esemeny(nev, start, tartam, false));
+         }
+     }
+     Rendezes();
+ }
