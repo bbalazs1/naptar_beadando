@@ -184,3 +184,14 @@ namespace CsaladiNaptar
       Console.WriteLine("A legkozelebbi: " + legkozelebbi.ToString());
       Console.ReadLine();
   }
+        static void Mentes()
+        {
+            StreamWriter sw = new StreamWriter("naptar.txt");
+            foreach (Esemeny e in esemenyek)
+            {
+                sw.WriteLine(e.Tulajdonos + ";" + e.Idopont + ";" + e.Idotartam);
+            }
+            sw.Close();
+        }
+    }
+}
