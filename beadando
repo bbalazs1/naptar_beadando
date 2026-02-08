@@ -113,3 +113,17 @@ namespace CsaladiNaptar
                 }
             }
         }
+
+        static void Listazas()
+        {
+            Console.Clear();
+            foreach (Esemeny e in esemenyek)
+            {
+                if (e.IsUj) Console.ForegroundColor = ConsoleColor.Green;
+                else Console.ResetColor();
+                Console.WriteLine(e.ToString());
+            }
+            Console.ResetColor();
+            Console.WriteLine("\nNyomj entert...");
+            Console.ReadLine();
+        }
