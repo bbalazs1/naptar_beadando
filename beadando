@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace CsaladiNaptar
+{
+    class Esemeny
+    {
+        public string Tulajdonos;
+        public DateTime Idopont;
+        public TimeSpan Idotartam;
+        public bool IsUj;
+
+        public Esemeny(string tulajdonos, DateTime idopont, TimeSpan idotartam, bool isUj)
+        {
+            this.Tulajdonos = tulajdonos.ToLower();
+            this.Idopont = idopont;
+            this.Idotartam = idotartam;
+            this.IsUj = isUj;
+        }
+
+        public DateTime GetVegIdopont()
+        {
+            return Idopont.Add(Idotartam);
+        }
+
+        public override string ToString()
+        {
+            return Idopont.ToString("yyyy.MM.dd HH:mm") + " - " + GetVegIdopont().ToString("HH:mm") + " | " + Tulajdonos + " (" + Idotartam.TotalMinutes + " perc)";
+        }
+    }
