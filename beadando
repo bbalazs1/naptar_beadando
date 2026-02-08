@@ -98,3 +98,18 @@ namespace CsaladiNaptar
       return false;
   }
 
+        static void Rendezes()
+        {
+            for (int i = 0; i < esemenyek.Count - 1; i++)
+            {
+                for (int j = i + 1; j < esemenyek.Count; j++)
+                {
+                    if (esemenyek[i].Idopont > esemenyek[j].Idopont)
+                    {
+                        Esemeny csere = esemenyek[i];
+                        esemenyek[i] = esemenyek[j];
+                        esemenyek[j] = csere;
+                    }
+                }
+            }
+        }
