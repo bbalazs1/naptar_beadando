@@ -80,3 +80,21 @@ namespace CsaladiNaptar
      }
      Rendezes();
  }
+  static bool UtkozesVan(string nev, DateTime start, TimeSpan tartam)
+  {
+      DateTime vege = start.Add(tartam);
+      string keresettNev = nev.ToLower();
+
+      foreach (Esemeny e in esemenyek)
+      {
+          if (e.Tulajdonos == keresettNev)
+          {
+              if (start < e.GetVegIdopont() && e.Idopont < vege)
+              {
+                  return true;
+              }
+          }
+      }
+      return false;
+  }
+
