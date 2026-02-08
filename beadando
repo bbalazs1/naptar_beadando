@@ -29,3 +29,36 @@ namespace CsaladiNaptar
             return Idopont.ToString("yyyy.MM.dd HH:mm") + " - " + GetVegIdopont().ToString("HH:mm") + " | " + Tulajdonos + " (" + Idotartam.TotalMinutes + " perc)";
         }
     }
+  class Program
+  {
+      static List<Esemeny> esemenyek = new List<Esemeny>();
+      static Random rnd = new Random();
+
+      static void Main(string[] args)
+      {
+          KezdetiFeltoltes();
+
+          bool fut = true;
+          while (fut)
+          {
+              Console.ResetColor();
+              Console.Clear();
+              Console.WriteLine("2028 FEBRUAR - CSALADI NAPTAR");
+              Console.WriteLine("1. Naptar megjelenitese");
+              Console.WriteLine("2. Uj esemeny rogzitese");
+              Console.WriteLine("3. Legkozelebbi esemeny");
+              Console.WriteLine("4. Kilepes es mentes");
+              Console.Write("Valassz: ");
+
+              string v = Console.ReadLine();
+
+              if (v == "1") Listazas();
+              else if (v == "2") UjEsemeny();
+              else if (v == "3") Legkozelebbi();
+              else if (v == "4")
+              {
+                  Mentes();
+                  fut = false;
+              }
+          }
+      }
