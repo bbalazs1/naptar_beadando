@@ -160,3 +160,27 @@ namespace CsaladiNaptar
        }
        Console.ReadLine();
    }
+  static void Legkozelebbi()
+  {
+      Console.Clear();
+      DateTime refPont = new DateTime(2028, 2, rnd.Next(1, 30), rnd.Next(0, 24), rnd.Next(0, 60), 0);
+      Console.WriteLine("Referencia: " + refPont.ToString());
+
+      if (esemenyek.Count == 0) return;
+
+      Esemeny legkozelebbi = esemenyek[0];
+      long minKulonbseg = Math.Abs((esemenyek[0].Idopont - refPont).Ticks);
+
+      for (int i = 1; i < esemenyek.Count; i++)
+      {
+          long aktualisKulonbseg = Math.Abs((esemenyek[i].Idopont - refPont).Ticks);
+          if (aktualisKulonbseg < minKulonbseg)
+          {
+              minKulonbseg = aktualisKulonbseg;
+              legkozelebbi = esemenyek[i];
+          }
+      }
+
+      Console.WriteLine("A legkozelebbi: " + legkozelebbi.ToString());
+      Console.ReadLine();
+  }
